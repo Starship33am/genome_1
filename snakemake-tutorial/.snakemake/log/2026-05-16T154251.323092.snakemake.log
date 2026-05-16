@@ -1,0 +1,36 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 10
+Rules claiming more threads will be scaled down.
+Job stats:
+job              count
+-------------  -------
+all                  1
+bcftools_call        1
+plot_quals           1
+total                3
+
+Select jobs to execute...
+
+[Sat May 16 15:42:51 2026]
+rule bcftools_call:
+    input: data/genome.fa, sorted_reads/A.bam, sorted_reads/B.bam, sorted_reads/A.bam.bai, sorted_reads/B.bam.bai
+    output: calls/all.vcf
+    jobid: 2
+    reason: Missing output files: calls/all.vcf
+    resources: tmpdir=/var/folders/8x/1_x46j1s3pb5vsqk90bdlh5m0000gn/T
+
+[Sat May 16 15:42:51 2026]
+Error in rule bcftools_call:
+    jobid: 2
+    input: data/genome.fa, sorted_reads/A.bam, sorted_reads/B.bam, sorted_reads/A.bam.bai, sorted_reads/B.bam.bai
+    output: calls/all.vcf
+    shell:
+        bcftools mpileup -f data/genome.fa sorted_reads/A.bam sorted_reads/B.bam | bcftools call -mv - > calls/all.vcf
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job bcftools_call since they might be corrupted:
+calls/all.vcf
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2026-05-16T154251.323092.snakemake.log
