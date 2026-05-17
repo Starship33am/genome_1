@@ -159,6 +159,17 @@ with col_d:
     )
     st.plotly_chart(fig4, use_container_width=True)
 
+col_e, col_f = st.columns(2)
+with col_e:
+    st.subheader=("Posición tipo")
+    fig5 = px.scatter(df, 
+    x="POS", 
+    y="QUAL",
+    color="ALT",  # A=azul, T=verde, C=naranja, G=rojo
+    symbol="TYPE"
+)
+st.plotly_chart(fig5, use_container_width=True)
+
 st.divider()
 
 # ============ TABLA ============
